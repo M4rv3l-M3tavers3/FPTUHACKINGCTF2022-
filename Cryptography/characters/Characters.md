@@ -34,3 +34,5 @@ Vậy giờ ta chỉ cần dùng RsaCtfTool để decode từng kí tự một t
 Tôi đã code một đoạn scripts để encode từng kí tự bằng RsaCtfTool.
 
 ### [$Exploit code](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/characters/solve.py)
+
+### Flag: FPTUHacking{3ncRYpt1ng_34ch_ch4r_ainT_G0nn4_h3lp}
