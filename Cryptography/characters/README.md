@@ -1,4 +1,4 @@
-## characters
+## Characters
 
 > Description: FPTU security offers encryption for each character, is it worth?\
 > Author: Cli3nt
