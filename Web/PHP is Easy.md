@@ -2,7 +2,7 @@
 
 - The original site was http://103.245.249.76:49154/ but the site will likely be take down, the original file is: 
 
-```htm1
+```php
 <?php
 require "flag.php";
 error_reporting(0);
