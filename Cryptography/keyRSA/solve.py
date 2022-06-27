@@ -1,34 +1,5 @@
 from pwn import *
 import gmpy2
-from gmpy2 import mpz, mpq, mpfr
-
-target = remote("103.245.249.76", 49160)
-
-target.sendafter(": ) ", "y".encode())
-target.recvline()
-mess = target.recvline()
-print(mess.decode())
-target.recvline()
-
-
-paramE = target.recvline(keepends=False)
-e = paramE.decode().split(" = ")[1]
-print("e = ", e)
-
-paramN = target.recvline(keepends=False)
-n = paramN.decode().split(" = ")[1]
-print("n = ", n)
-
-paramX = target.recvline(keepends=False)
-x = paramX.decode().split(" = ")[1]
-print("x = ", x)
-
-out = target.recvline(keepends=False)
-print(out.decode())
-
-p = int(x)
-q = int(n) // p
-phi=(p-1)*(q-1)
 
 x, y = 0, 1
 
@@ -55,6 +26,33 @@ def modInverse(a, m):
     else:
         res = (x % m + m) % m
         return res
+
+target = remote("103.245.249.76", 49160)
+
+target.sendafter(": ) ", "y".encode())
+target.recvline()
+mess = target.recvline()
+print(mess.decode())
+target.recvline()
+
+paramE = target.recvline(keepends=False)
+e = paramE.decode().split(" = ")[1]
+print("e = ", e)
+
+paramN = target.recvline(keepends=False)
+n = paramN.decode().split(" = ")[1]
+print("n = ", n)
+
+paramX = target.recvline(keepends=False)
+x = paramX.decode().split(" = ")[1]
+print("x = ", x)
+
+out = target.recvline(keepends=False)
+print(out.decode())
+
+p = int(x)
+q = int(n) // p
+phi=(p-1)*(q-1)
 
 print("phin = ", phi)
 
