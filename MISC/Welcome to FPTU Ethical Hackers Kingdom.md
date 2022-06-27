@@ -48,7 +48,7 @@ module.exports = app;
 ### $Solution
 * Giống như console của trình duyệt chúng ta giờ nhập một chuỗi thỏa mãn được các điều kiện nhưng vẫn phải lấy được kiểu số 1073 để in ra được flag cuối cùng.
 * Trong các kí tự có thể nhập để ý thấy chỉ có chữ và các kí hiệu khác như !/[^).(]/ không thấy có số mà ở đây cần lấy giá trị là kiểu số 1073 nên chúng ta sẽ nghĩ đến hàm length có sẵn trong javascript, và cũng không được có " nên chúng ta khó có thể tạo một chuỗi bình thường chĩnh vì vậy chúng ta nghĩ tới các kiểu chuỗi có sẵn như NaN, null, undefined, Infinity cùng với các hàm để cộng và nhân giá trị khi kết hợp với hàm length như concat và repeat
-* Sau khi dùng các phép toán để có thể dùng cách nêu trên để ra số 1073 thì cần lưu ý là chuỗi nhập vào không vượt quá 190
+* Sau khi dùng các phép toán để có thể dùng cách nêu trên ra được số 1073 thì cần lưu ý là chuỗi nhập vào không vượt quá 190
 
 ``` console
 String().concat(undefined).repeat(String().concat(undefined).length).repeat(String().concat(undefined).concat(null).length).concat(undefined).concat(Infinity).concat(NaN).length
