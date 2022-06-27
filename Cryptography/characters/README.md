@@ -26,11 +26,12 @@ for i in flag:
 
 Đầu tiên chúng ta sử dụng tool RsaCtfTool để thử xem có decode về thành dạng plaintext hay không?
 ![Screenshot 2022-06-27 145720](https://user-images.githubusercontent.com/77691959/175889749-0571df41-bd5f-4b61-baee-af865ab475cc.png)
+
 Kết quả cho ra là chữ "F" chính là kí tự đầu của flag.
 
-Vậy giờ ta chỉ cần dùng RsaCtfTool để decode từng kí tự một trong flag.
+Vậy giờ ta chỉ cần dùng RsaCtfTool để decode từng kí tự một trong flag.\
 ![Screenshot 2022-06-27 151823](https://user-images.githubusercontent.com/77691959/175893302-4842deff-7ce0-4c69-a2e5-bfd0a60f3427.png)
 
 Tôi đã code một đoạn scripts để encode từng kí tự bằng RsaCtfTool.
 
-### [Exploit code](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/characters/solve.py)
+### [$Exploit code](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/characters/solve.py)
