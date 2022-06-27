@@ -6,31 +6,9 @@
 
 Challenge này có 2 file đính kèm, trong đó có 1 file để thực thi mã khóa flag, và một file là kết quả mã hóa.
 
-#### 1. out.txt
+#### 1. [out.txt](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/characters/out.txt)
 
-#### 2. enc.py
-
-```python
-from Crypto.Util.number import getPrime, bytes_to_long, GCD
-
-flag = open('flag.txt', 'r').read()
-flag = list(flag)
-
-p = getPrime(96)
-q = getPrime(96)
-
-e = 65537
-n = p * q
-assert GCD(e,n) == 1
-
-ct = []
-for i in flag:
-    ct.append( pow(  bytes_to_long(i.encode()),e,n) )
-
-print(f'{ct = }')
-print(f'{n = }')
-print(f'{e = }')
-```
+#### 2. [enc.py](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/characters/enc.py)
 
 ### $Explain source code
 
@@ -51,5 +29,8 @@ for i in flag:
 Kết quả cho ra là chữ "F" chính là kí tự đầu của flag.
 
 Vậy giờ ta chỉ cần dùng RsaCtfTool để decode từng kí tự một trong flag.
+![Screenshot 2022-06-27 151823](https://user-images.githubusercontent.com/77691959/175893302-4842deff-7ce0-4c69-a2e5-bfd0a60f3427.png)
 
-### [Exploit code]()
+Tôi đã code một đoạn scripts để encode từng kí tự bằng RsaCtfTool.
+
+### [Exploit code](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/characters/solve.py)
