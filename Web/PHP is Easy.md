@@ -31,7 +31,7 @@ specifically i chose `0e215962017` to compare with hash MD5 ` gdVIdSQL8Cm`.
 
 `http://103.245.249.76:49154/?0ni0n=0e215962017`
 
-Wait a few seconds...
+Wait a seconds...
 
 ![image](https://user-images.githubusercontent.com/93731698/175896148-3505ff75-f42a-4382-9240-04f2f7a68c2a.png)
 
