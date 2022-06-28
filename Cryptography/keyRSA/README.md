@@ -68,6 +68,9 @@ Sau khi đã tìm đc đồng dư của d thì đấy chính là user_d chúng t
 
 ![Screenshot 2022-06-28 141822](https://user-images.githubusercontent.com/77691959/176117648-fffb2e6a-44c3-4496-8154-4f1ab31cd1d6.png)
 
-### [Source code exploit](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/keyRSA/solve.py)
+#### [Source code exploit](https://github.com/M4rv3l-M3tavers3/FPTUHACKINGCTF2022-/blob/main/Cryptography/keyRSA/solve.py)
 
-### Flag: FPTUHacking{Y0u_kn0w_t0_CR34t3_y0ur_0wn_k3y!!!}
+#### Flag: FPTUHacking{Y0u_kn0w_t0_CR34t3_y0ur_0wn_k3y!!!}
+
+## References:
+* https://crypto.stackexchange.com/questions/48828/multiple-private-keys-with-rsa
