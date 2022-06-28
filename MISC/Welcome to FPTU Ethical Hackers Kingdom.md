@@ -1,7 +1,14 @@
 # Welcome to FPTU Ethical Hackers Kingdom
 > Description: Welcome to [FPTU Ethical Hackers Kingdom](http://103.245.249.76:49159/) , where King of Deception and his people are living!\
 > Author: antoinenguyen_09
-* Vào web và xem source code. 
+* Vào web bấm F12 xem thử và thấy có một comment.
+
+```html
+<!-- Hahaha, you guys are idiots! The key was move from FPTU Ethical Hackers Kingdom to /source by our king Antoine!-->
+```
+
+*  Vì thế mình vào xem /source code. 
+
 ``` html
 const express = require('express');
 const path = require('path');
@@ -42,16 +49,16 @@ module.exports = app;
 ```
 ### $Explain
 * Quan trọng ở đây là từ dòng 16 đến 22, đang lấy secret là chuỗi chúng ta nhập vào và thỏa mãn các điều kiện trong if.
-* Có 2 điều kiện cần thỏa mãn là chuỗi nhập vào không được vượt quá 190 kí tự và chuỗi đó chỉ được chứa các kí tự !/[^A-Za-z).(]/ 
+* Có 2 điều kiện cần thỏa mãn là chuỗi nhập vào không được vượt quá 190 kí tự và chuỗi đó chỉ được chứa các kí tự A-Za-z).( 
 * Sau khi đã vượt qua được đoạn kiểm tra đó thì chúng ta có key = virtual_machine.runInNewContext(secret, {}, { timeout: 100 }) có nghĩa là nó đang đối chiếu với đối tượng {}, biên dịch code trong secret được viết và chạy nó sau tất cả điều này sẽ trả về kết quả đầu ra lưu lại trong key.
 * Sau đó nếu key bằng cả giá trị và kiểu với số 1073 thì chúng ta sẽ nhận được flag ở dạng base64
 ### $Solution
 * Giống như console của trình duyệt chúng ta giờ nhập một chuỗi thỏa mãn được các điều kiện nhưng vẫn phải lấy được kiểu số 1073 để in ra được flag cuối cùng.
-* Trong các kí tự có thể nhập để ý thấy chỉ có chữ và các kí hiệu khác như !/[^).(]/ không thấy có số mà ở đây cần lấy giá trị là kiểu số 1073 nên chúng ta sẽ nghĩ đến hàm length có sẵn trong javascript, và cũng không được có " nên chúng ta khó có thể tạo một chuỗi bình thường chĩnh vì vậy chúng ta nghĩ tới các kiểu chuỗi có sẵn như NaN, null, undefined, Infinity cùng với các hàm để cộng và nhân giá trị khi kết hợp với hàm length như concat và repeat
-* Sau khi dùng các phép toán để có thể dùng cách nêu trên ra được số 1073 thì cần lưu ý là chuỗi nhập vào không vượt quá 190
+* Trong các kí tự có thể nhập để ý thấy chỉ có chữ và các kí hiệu khác như ).( không thấy có số mà ở đây cần lấy giá trị là kiểu số 1073 nên chúng ta sẽ nghĩ đến hàm length có sẵn trong javascript, và cũng không được có " nên chúng ta khó có thể tạo một chuỗi bình thường chĩnh vì vậy chúng ta nghĩ tới các kiểu chuỗi có sẵn như NaN, null, undefined, Infinity và thêm một lưu ý là chuỗi nhập vào không vượt quá 190 nên kết hợp với các hàm cộng và nhân giá trị với hàm length như concat và repeat để độ dài chuỗi có thể tăng lên nhanh chóng mà vẫn không vượt quá 190 kí tự.
+* Ví dụ: Sau khi tính toán ta có phép toán đạt được 1073 mà vẫn có độ dài thỏa mãn là: 9 * 9 * ( 4 + 9 ) + 3 + 8 + 9 = 1073, ta có tương ứng 9 = String().concat(undefined) sau đó 9 * 9 thêm vào là repeat(String().concat(undefined).length) và cứ tương tự như vậy.
 
 ``` console
-String().concat(undefined).repeat(String().concat(undefined).length).repeat(String().concat(undefined).concat(null).length).concat(undefined).concat(Infinity).concat(NaN).length
+String().concat(undefined).repeat(String().concat(undefined).length).repeat(String().concat(null).concat(undefined).length).concat(NaN).concat(Infinity).concat(undefined).length
 ```
 
 * Flag ở dạng base64: RlBUVUhhY2tpbmd7YmFuX3F1YV9odSxiYW5fZGFfYmlfQW50b2luZV9uaG90X3Zhb19qc19qYWlsfQ== . Chuyển đổi về chuỗi.
