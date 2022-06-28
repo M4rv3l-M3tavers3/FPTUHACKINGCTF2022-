@@ -1,6 +1,6 @@
 # PHP is Easy
 
-- The original site was http://103.245.249.76:49154/ but the site will likely be take down, the original file is: 
+- IP: http://103.245.249.76:49154/
 
 ```php
 <?php
@@ -20,19 +20,20 @@ show_source(__FILE__);
 ?>
 ```
 
-### Strategy
-
-- Tôi thấy file includes "flag.php" và biến đầu vào là `0ni0n` , mã hash md5 `0gdVIdSQL8Cm`. 
-- Tôi phát hiện vulnerability của bài này nằm ở việc dùng operator `==`. Operator `===`, compare 2 variable chặt chẽ về kiểu dữ liệu và giá trị. Còn operator `==` thì chỉ xét về compare 2 variable có cùng value.
-Example: “0ABC” sẽ bằng với “0dABC”.
-
-- To exploit this vulnerability, i use intput hash MD5 stay [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Type%20Juggling/README.md?fbclid=IwAR1I7iyNDj6xRrOTmHtIg67Q2ksMtGqJ3-SYsbdQm6dnJZaQajWfeiK7llY),
-specifically i chose `0e215962017` to compare with hash MD5 ` gdVIdSQL8Cm`.
-
-`http://103.245.249.76:49154/?0ni0n=0e215962017`
+### Phân tích:
+- Đọc source code có thể rõ ràng thấy đây là một challenge về PHP. Và đây là một vul của PHP về [PHP Loose Comparsion](https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf) và [Magic hashes – PHP hash "collisions"](https://github.com/spaze/hashes).
+- Tôi thấy giá trị GET Parameter `0ni0n` và được gán cho variable `$a`. 
+- Tiếp đến, `isset ($a)` nghĩa là nếu `$a` tồn tại thì sẽ alert với điều kiện: 
+  
+  `a != "0gdVISQL8Cm" && $md52 == $md51`
+- Check hash md5 của `0gdVIdSQL8Cm`: `0e366928091944678781059722345471`
+- Nhận khi đọc được một bài về [PHP Juggling type and magic hashes](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Type%20Juggling/README.md?fbclid=IwAR1I7iyNDj6xRrOTmHtIg67Q2ksMtGqJ3-SYsbdQm6dnJZaQajWfeiK7llY#php-juggling-type-and-magic-hashes), thì so sánh `==`(loose), chỉ cần so sánh giá trị hash thì luôn bằng nhau.
+- Nên lấy `$a` = `QNKCDZO` có hash là `0e830400451993494058024219903391` đem ra so sánh với mã hash trong đoạn code => Thỏa mãn điều kiện. 
+- Ta có payload: `http://103.245.249.76:49154/?0ni0n=QNKCDZO`
 
 Wait a seconds...
 
-![image](https://user-images.githubusercontent.com/93731698/175896148-3505ff75-f42a-4382-9240-04f2f7a68c2a.png)
+![image](https://user-images.githubusercontent.com/93731698/176144711-e87cdbbe-aa47-48ab-b9ac-a8accc5d0279.png)
+
 
 ### Flag: `FPTUHACKING{Md5_bY_pAAs_eZ_H4_H4}`
