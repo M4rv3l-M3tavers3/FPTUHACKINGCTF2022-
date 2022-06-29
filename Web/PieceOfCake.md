@@ -97,6 +97,7 @@ else{
 ```
 
 - Mình thấy có 1 biến `$slat` concat trước các biến `$str2`, `$Str3` và đọc dòng lệnh `if(hash('md5', $salt . $str2) == hash('md5', $salt . $str3))`, mình đã nghĩ ngay thử gán Parameter `1` = mã hash nào đó, Parameter `2` = mã hash nào đó vì dây là loose compare trong PHP như ở trên mình nói khi so sánh `==`. Nhưng mình đã thử 1 cách khác mình, 1 cho Parameter `1` vào 1 mảng và gán với 1 giá trị random (`1[]=`), Parameter `2` tương tự => Bypass và ra phần còn lại của flag. 
+- Giải thích nghĩ hơn về concat một String với Array, bạn có thể tham khảo ở [đây](https://jaimelightfoot.com/blog/b00t2root-ctf-easyphp/).
 - Payload: `http://103.245.249.76:49155/?0=0e1137126905&1[]=2222&2[]=adasdsa`
 
 ### $Flag:
