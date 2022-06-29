@@ -74,3 +74,4 @@ Sau khi đã tìm đc đồng dư của d thì đấy chính là user_d chúng t
 
 ## References:
 * https://crypto.stackexchange.com/questions/48828/multiple-private-keys-with-rsa
+* https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/
